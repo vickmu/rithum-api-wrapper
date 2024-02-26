@@ -28,7 +28,7 @@ setup(
         'numpy>=1.21.5',
     ],
     long_description=open('README.md').read(),
-    url='https://github.com/yourgithubrepo/channeladvisor',  # Optional project URL
+    url='https://github.com/vickmu/rithum-api-wrapper',  
     classifiers=[
         'Programming Language :: Python :: 3',
         'License :: OSI Approved :: MIT License', 
