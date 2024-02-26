@@ -1,0 +1,44 @@
+# .readthedocs.yml
+# Read the Docs configuration file
+# See https://docs.readthedocs.io/en/stable/config-file/v2.html for details
+
+version: 2
+
+# Build documentation in the docs/ directory with Sphinx
+sphinx:
+  configuration: docs/conf.py
+
+# Explicitly define the Python version
+# Adjust "3.x" to match the version you're using
+python:
+  version: 3.8
+  install:
+    - requirements: docs/requirements.txt
+    - method: pip
+      path: .
+
+# Optionally specify the format of your documentation output.
+formats:
+  - htmlzip
+  - pdf
+  - epub
+
+# Use Python 3.x as the programming language
+# Set the system dependencies required to build your docs
+build:
+  os: "ubuntu-20.04"
+  tools:
+    python: "3.8"
+
+# Set the default branch and the version of the documentation to build
+# Adjust "main" if your default branch has a different name
+# This section is optional; defaults will be used if omitted
+# version:
+#   default-branch: main
+#   latest-version: latest
+
+# Optionally, specify a different domain or theme for your docs
+# html:
+#   theme: sphinx_rtd_theme
+#   domain: your.custom.domain.com
+
