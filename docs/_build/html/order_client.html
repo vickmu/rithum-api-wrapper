@@ -57,6 +57,19 @@
 </pre></div>
 </div>
 </section>
+<section id="advanced-listing-orders-w-filtering">
+<h2>Advanced Listing Orders W/Filtering<a class="headerlink" href="#advanced-listing-orders-w-filtering" title="Link to this heading">¶</a></h2>
+<p>Requires a Filter object:</p>
+<p>Example getting a list of unshipped order from a profile and a specific site</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">order_filter</span> <span class="o">=</span> <span class="n">Filter</span><span class="p">()</span>
+<span class="n">order_filter</span><span class="o">.</span><span class="n">add_filter</span><span class="p">(</span><span class="n">attribute</span><span class="o">=</span><span class="s2">&quot;ShippingStatus&quot;</span><span class="p">,</span> <span class="n">operator</span><span class="s2">&quot;eq&quot;</span><span class="p">,</span> <span class="s2">&quot;value=&quot;</span><span class="n">Unshipped</span><span class="s2">&quot;)</span>
+<span class="n">order_filter</span><span class="o">.</span><span class="n">add_filter</span><span class="p">(</span><span class="n">attribute</span><span class="o">=</span><span class="s2">&quot;ProfileID&quot;</span><span class="p">,</span> <span class="n">operator</span><span class="s2">&quot;eq&quot;</span><span class="p">,</span> <span class="s2">&quot;value=1234123)</span>
+<span class="n">order_filter</span><span class="o">.</span><span class="n">add_filter</span><span class="p">(</span><span class="n">attribute</span><span class="o">=</span><span class="s2">&quot;siteID&quot;</span><span class="p">,</span> <span class="n">operator</span><span class="s2">&quot;eq&quot;</span><span class="p">,</span> <span class="s2">&quot;value=666)</span>
+
+<span class="n">response</span> <span class="o">=</span> <span class="n">order_client</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="n">order_filter</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
 <section id="getting-an-order-by-id">
 <h2>Getting an Order by ID<a class="headerlink" href="#getting-an-order-by-id" title="Link to this heading">¶</a></h2>
 <p>Retrieve a specific order by its ID, expanding items details:</p>
@@ -122,6 +135,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#initialization">Initialization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#listing-orders">Listing Orders</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-listing-orders-w-filtering">Advanced Listing Orders W/Filtering</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#getting-an-order-by-id">Getting an Order by ID</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#creating-an-order">Creating an Order</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#updating-an-order-private-notes">Updating an order private notes</a></li>
