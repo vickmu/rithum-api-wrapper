@@ -57,16 +57,18 @@
 </pre></div>
 </div>
 </section>
-<section id="advanced-listing-orders-w-filtering">
-<h2>Advanced Listing Orders W/Filtering<a class="headerlink" href="#advanced-listing-orders-w-filtering" title="Link to this heading">¶</a></h2>
+<section id="advanced-listing-orders-w-filtering-pagination">
+<h2>Advanced Listing Orders W/Filtering &amp; Pagination<a class="headerlink" href="#advanced-listing-orders-w-filtering-pagination" title="Link to this heading">¶</a></h2>
 <p>Requires a Filter object:</p>
-<p>Example getting a list of unshipped order from a profile and a specific site</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">order_filter</span> <span class="o">=</span> <span class="n">Filter</span><span class="p">()</span>
-<span class="n">order_filter</span><span class="o">.</span><span class="n">add_filter</span><span class="p">(</span><span class="n">attribute</span><span class="o">=</span><span class="s2">&quot;ShippingStatus&quot;</span><span class="p">,</span> <span class="n">operator</span><span class="o">=</span><span class="s2">&quot;eq&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;Unshipped&quot;</span><span class="p">)</span>
-<span class="n">order_filter</span><span class="o">.</span><span class="n">add_filter</span><span class="p">(</span><span class="n">attribute</span><span class="o">=</span><span class="s2">&quot;ProfileID&quot;</span><span class="p">,</span> <span class="n">operator</span><span class="o">=</span><span class="s2">&quot;eq&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">1234123</span><span class="p">)</span>
-<span class="n">order_filter</span><span class="o">.</span><span class="n">add_filter</span><span class="p">(</span><span class="n">attribute</span><span class="o">=</span><span class="s2">&quot;siteID&quot;</span><span class="p">,</span> <span class="n">operator</span><span class="o">=</span><span class="s2">&quot;eq&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="mi">666</span><span class="p">)</span>
+<p>Example getting a list of Shipped Amazon orders from a specific profile</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">order_client</span> <span class="o">=</span> <span class="n">factory</span><span class="o">.</span><span class="n">order_client</span>
 
-<span class="n">response</span> <span class="o">=</span> <span class="n">order_client</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="n">order_filter</span><span class="p">)</span>
+<span class="n">order_filter</span> <span class="o">=</span> <span class="n">Filter</span><span class="p">()</span>
+<span class="n">order_filter</span><span class="o">.</span><span class="n">add_filter</span><span class="p">(</span><span class="n">attribute</span><span class="o">=</span><span class="s2">&quot;ShippingStatus&quot;</span><span class="p">,</span> <span class="n">operator</span><span class="o">=</span><span class="s2">&quot;eq&quot;</span><span class="p">,</span> <span class="n">value</span><span class="o">=</span><span class="s2">&quot;Shipped&quot;</span><span class="p">)</span>
+<span class="n">order_filter</span><span class="o">.</span><span class="n">add_filter</span><span class="p">(</span><span class="n">attribute</span><span class="o">=</span><span class="s1">&#39;CreatedDateUtc&#39;</span><span class="p">,</span> <span class="n">operator</span><span class="o">=</span><span class="s1">&#39;ge&#39;</span><span class="p">,</span><span class="n">value</span><span class="o">=</span><span class="s1">&#39;2024-02-20&#39;</span><span class="p">,</span> <span class="n">quote_value</span><span class="o">=</span><span class="kc">False</span> <span class="p">)</span>
+
+<span class="c1">#list() will combine the responses and return a list List[Dict[str, Any]]</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">order_client</span><span class="o">.</span><span class="n">list</span><span class="p">(</span><span class="n">order_filter</span><span class="o">=</span><span class="n">order_filter</span><span class="p">,</span> <span class="n">paginate</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">page_size</span><span class="o">=</span><span class="mi">250</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
@@ -135,7 +137,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#initialization">Initialization</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#listing-orders">Listing Orders</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#advanced-listing-orders-w-filtering">Advanced Listing Orders W/Filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#advanced-listing-orders-w-filtering-pagination">Advanced Listing Orders W/Filtering &amp; Pagination</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#getting-an-order-by-id">Getting an Order by ID</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#creating-an-order">Creating an Order</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#updating-an-order-private-notes">Updating an order private notes</a></li>

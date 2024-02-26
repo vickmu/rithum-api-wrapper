@@ -29,21 +29,24 @@ Retrieve a list of orders:
     orders = order_client.list()
     print(orders.json())  # Assuming the response is a JSON object
 
-Advanced Listing Orders W/Filtering
------------------------------------
+Advanced Listing Orders W/Filtering & Pagination
+------------------------------------------------
 
 Requires a Filter object: 
 
-Example getting a list of unshipped order from a profile and a specific site
+Example getting a list of Shipped Amazon orders from a specific profile
 
 .. code-block:: python
 
-    order_filter = Filter()
-    order_filter.add_filter(attribute="ShippingStatus", operator="eq", value="Unshipped")
-    order_filter.add_filter(attribute="ProfileID", operator="eq", value=1234123)
-    order_filter.add_filter(attribute="siteID", operator="eq", value=666)
+    order_client = factory.order_client
 
-    response = order_client.list(order_filter)
+    order_filter = Filter()
+    order_filter.add_filter(attribute="ShippingStatus", operator="eq", value="Shipped")
+    order_filter.add_filter(attribute='CreatedDateUtc', operator='ge',value='2024-02-20', quote_value=False )
+    
+    #list() will combine the responses and return a list List[Dict[str, Any]]
+    response = order_client.list(order_filter=order_filter, paginate=True, page_size=250)
+
 
 Getting an Order by ID
 ----------------------
