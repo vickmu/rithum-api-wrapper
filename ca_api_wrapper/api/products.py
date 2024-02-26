@@ -6,7 +6,7 @@ from urllib.parse import quote
 
 log = logging.getLogger(__name__)
 class ProductClient:
-    def __init__(self, client):
+    def __init__(self, client:ChannelAdvisorClient):
         assert type(client) == ChannelAdvisorClient, "client must be a ChannelAdvisorClient object"
         self.client = client
         self._endpoints = ChannelAdvisorEndpoints(self.client)
@@ -20,13 +20,13 @@ class ProductClient:
         return self._endpoints.attributes
 
 class ChannelAdvisorEndpoints: 
-    def __init__(self, client):
+    def __init__(self, client:ChannelAdvisorClient):
         self.client = client
         self.products = ChannelAdvisorProductsEndpoints(self.client)
         self.attributes = ChannelAdvisorAttributesEndpoints(self.client)
         
 class ChannelAdvisorProductsEndpoints: 
-    def __init__(self, client):        
+    def __init__(self, client:ChannelAdvisorClient):        
         self.client = client
 
     def list(self):
@@ -65,7 +65,7 @@ class ChannelAdvisorProductsEndpoints:
         return self.client.make_request("v1/products", params=f"$filter={upc_filter}")
         
 class ChannelAdvisorAttributesEndpoints: 
-    def __init__(self, client):
+    def __init__(self, client:ChannelAdvisorClient):
         self.client = client
 
     def get(self, product_id: int, attribute_name: str):    
