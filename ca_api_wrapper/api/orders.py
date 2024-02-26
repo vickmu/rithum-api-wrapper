@@ -6,12 +6,12 @@ class OrderClient:
     def __init__(self, client: ChannelAdvisorClient):
         self.client = client
 
-    def list(self, order_filter=None):
+    def list(self, order_filter: Filter=None):
         if order_filter: 
             assert isinstance(type(order_filter) == Filter)
         
         params = {
-            "$filter": order_filter
+            "$filter": order_filter.get_filter()
         }
         return self.client.make_request("v1/orders", params=params)
 
