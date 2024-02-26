@@ -37,11 +37,11 @@ Requires a Filter object:
 Example getting a list of unshipped order from a profile and a specific site
 
 .. code-block:: python
-    
+
     order_filter = Filter()
-    order_filter.add_filter(attribute="ShippingStatus", operator"eq", "value="Unshipped")
-    order_filter.add_filter(attribute="ProfileID", operator"eq", "value=1234123)
-    order_filter.add_filter(attribute="siteID", operator"eq", "value=666)
+    order_filter.add_filter(attribute="ShippingStatus", operator="eq", "value"="Unshipped")
+    order_filter.add_filter(attribute="ProfileID", operator="eq", "value"=1234123)
+    order_filter.add_filter(attribute="siteID", operator="eq", "value"=666)
 
     response = order_client.list(order_filter)
 
