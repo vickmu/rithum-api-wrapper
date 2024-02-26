@@ -1,5 +1,5 @@
 from .client import ChannelAdvisorClient
-from channeladvisor2.api.filters import ProductFilter
+from .filters import ProductFilter
 import logging
 import json
 from urllib.parse import quote
