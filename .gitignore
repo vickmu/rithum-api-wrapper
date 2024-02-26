@@ -2,3 +2,4 @@ creds.txt
 commands.txt
 dist/
 __pycache__
+tests.py
