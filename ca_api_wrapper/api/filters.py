@@ -1,4 +1,4 @@
-class ProductFilter:
+class Filter:
     OPERATORS = ["lt", "le", "gt", "ge", "eq", "ne"]
     LOGICAL_OPERATORS = ["and", "or"]
     DATE_FUNCTIONS = ["year", "month", "day", "hour", "minute", "second"]

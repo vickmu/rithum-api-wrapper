@@ -1,5 +1,5 @@
 from .client import ChannelAdvisorClient
-from .filters import ProductFilter
+from .filters import Filter
 import logging
 import json
 from urllib.parse import quote
@@ -33,7 +33,7 @@ class ChannelAdvisorProductsEndpoints:
         return self.client.make_request("v1/products")
     
     def get_by_sku(self, sku): 
-        product_filter = ProductFilter()
+        product_filter = Filter()
         
         encoded_sku = quote(sku)
         product_filter.add_filter(attribute="Sku", operator="eq", value=encoded_sku)
@@ -41,8 +41,8 @@ class ChannelAdvisorProductsEndpoints:
         
         return self.client.make_request("v1/products", params=f"$filter={sku_filter}")    
     
-    def report_generator_get_by_sku_expand_attributes(self, sku, access_token): 
-        product_filter = ProductFilter()
+    def report_generator_get_by_sku_expand_attributes(self, sku): 
+        product_filter = Filter()
 
         product_filter.add_filter(attribute="Sku", operator="eq", value=sku)
         sku_filter = product_filter.get_filter()
@@ -59,7 +59,7 @@ class ChannelAdvisorProductsEndpoints:
         return self.client.make_request(f"v1/Products({id})")
     
     def get_by_upc(self, upc): 
-        filter = ProductFilter()
+        filter = Filter()
         filter.add_filter(attribute="Upc", operator="eq", value=upc)
         upc_filter = filter.get_filter() 
         return self.client.make_request("v1/products", params=f"$filter={upc_filter}")
