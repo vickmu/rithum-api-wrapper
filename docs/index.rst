@@ -7,12 +7,13 @@ Welcome to ca_api_wrapper's documentation! V2
 =============================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 10
    :caption: Contents:
 
    clients_factory
    channel_advisor_client
-
+   product_export_client
+   
 Indices and tables
 ==================
 
