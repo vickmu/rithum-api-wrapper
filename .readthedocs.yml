@@ -11,7 +11,7 @@ sphinx:
 # Explicitly define the Python version
 # Adjust "3.x" to match the version you're using
 python:
-  version: 3.11
+  version: 3.8
   install:
     - requirements: docs/requirements.txt
     - method: pip
