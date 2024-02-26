@@ -1,12 +1,19 @@
 from .client import ChannelAdvisorClient
+from .filters import Filter
 import json
 
 class OrderClient:
     def __init__(self, client: ChannelAdvisorClient):
         self.client = client
 
-    def list(self):
-        return self.client.make_request("v1/orders")
+    def list(self, order_filter=None):
+        if order_filter: 
+            assert isinstance(type(order_filter) == Filter)
+        
+        params = {
+            "$filter": order_filter
+        }
+        return self.client.make_request("v1/orders", params=params)
 
     def get_by_id(self, id):
         return self.client.make_request(f"v1/Orders({id})?$expand=Items")
