@@ -86,6 +86,13 @@
 </pre></div>
 </div>
 </section>
+<section id="updating-an-order-private-notes">
+<h2>Updating an order private notes<a class="headerlink" href="#updating-an-order-private-notes" title="Link to this heading">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">response</span> <span class="o">=</span> <span class="n">order_client</span><span class="o">.</span><span class="n">create_private_note</span><span class="p">(</span><span class="nb">id</span><span class="o">=</span><span class="mi">12341</span><span class="p">,</span> <span class="n">note</span><span class="o">=</span><span class="s2">&quot;hello world&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>  <span class="c1"># Assuming the response is successful</span>
+</pre></div>
+</div>
+</section>
 </section>
 
 
@@ -117,6 +124,7 @@
 <li class="toctree-l2"><a class="reference internal" href="#listing-orders">Listing Orders</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#getting-an-order-by-id">Getting an Order by ID</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#creating-an-order">Creating an Order</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#updating-an-order-private-notes">Updating an order private notes</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="product_client.html">Product Client</a></li>

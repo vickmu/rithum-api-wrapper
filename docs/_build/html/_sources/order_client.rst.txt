@@ -62,3 +62,10 @@ Create a new order by providing order details as a dictionary:
     response = order_client.create(new_order)
     print(response.json())  # Assuming the response is successful
 
+Updating an order private notes
+-------------------------------
+
+.. code-block:: python
+
+    response = order_client.create_private_note(id=12341, note="hello world")
+    print(response.json())  # Assuming the response is successful
