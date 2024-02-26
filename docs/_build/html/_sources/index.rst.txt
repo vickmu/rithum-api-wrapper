@@ -12,7 +12,7 @@ Welcome to ca_api_wrapper's documentation!
 
 
 
-Indices and tables test
+Indices and tables
 ==================
 
 * :ref:`genindex`
