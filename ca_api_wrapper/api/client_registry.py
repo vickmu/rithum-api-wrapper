@@ -14,13 +14,16 @@ class ClientsFactory:
 
     @property
     def product_client(self):
+        """Returns an instance of ProductClient using the base client configuration."""
         return ProductClient(self._base_client)
 
     @property
     def order_client(self):
+        """Returns an instance of OrderClient using the base client configuration."""
         return OrderClient(self._base_client)
 
     @property
     def export_client(self):
+        """Returns an instance of ExportClient using the base client configuration."""
         return ProductExportClient(self._base_client)
 
