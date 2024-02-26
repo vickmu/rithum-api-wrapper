@@ -10,7 +10,8 @@ Welcome to ca_api_wrapper's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-
+   clients_factory
+   channel_advisor_client
 
 Indices and tables
 ==================
