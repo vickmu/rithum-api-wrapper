@@ -13,7 +13,10 @@ Welcome to ca_api_wrapper's documentation!
    clients_factory
    channel_advisor_client
    product_export_client
-
+   product_filter
+   order_client
+   product_client
+   
 Indices and tables
 ==================
 

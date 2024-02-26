@@ -3,8 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to ca_api_wrapper's documentation! V2
-=============================================
+Welcome to ca_api_wrapper's documentation!
+==========================================
 
 .. toctree::
    :maxdepth: 10
@@ -13,6 +13,9 @@ Welcome to ca_api_wrapper's documentation! V2
    clients_factory
    channel_advisor_client
    product_export_client
+   product_filter
+   order_client
+   product_client
    
 Indices and tables
 ==================

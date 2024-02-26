@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>Product Filter &#8212; ca_api_wrapper  documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=12dfc556" />
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=888ff710"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Order Client" href="order_client.html" />
+    <link rel="prev" title="Product Export Client" href="product_export_client.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="product-filter">
+<h1>Product Filter<a class="headerlink" href="#product-filter" title="Link to this heading">¶</a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">ProductFilter</span></code> class provides a flexible way to construct filters for querying products. It supports a variety of operators, logical operators, date functions, and math functions to create complex query conditions.</p>
+<section id="usage">
+<h2>Usage<a class="headerlink" href="#usage" title="Link to this heading">¶</a></h2>
+<p>Initialize the <code class="docutils literal notranslate"><span class="pre">ProductFilter</span></code> without any arguments:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">filters</span> <span class="kn">import</span> <span class="n">ProductFilter</span>
+
+<span class="nb">filter</span> <span class="o">=</span> <span class="n">ProductFilter</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="adding-filters">
+<h2>Adding Filters<a class="headerlink" href="#adding-filters" title="Link to this heading">¶</a></h2>
+<p>To add a filter condition, use the <code class="docutils literal notranslate"><span class="pre">add_filter</span></code> method specifying the attribute to filter on, the operator, and the value:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">filter</span><span class="o">.</span><span class="n">add_filter</span><span class="p">(</span><span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="s1">&#39;gt&#39;</span><span class="p">,</span> <span class="s1">&#39;100&#39;</span><span class="p">)</span>  <span class="c1"># price greater than 100</span>
+</pre></div>
+</div>
+<p>You can chain multiple conditions together, and they will be logically ANDed by default. To use a different logical operator, specify it as the fourth argument:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">filter</span><span class="o">.</span><span class="n">add_filter</span><span class="p">(</span><span class="s1">&#39;category&#39;</span><span class="p">,</span> <span class="s1">&#39;eq&#39;</span><span class="p">,</span> <span class="s1">&#39;Electronics&#39;</span><span class="p">,</span> <span class="s1">&#39;or&#39;</span><span class="p">)</span>  <span class="c1"># OR condition</span>
+</pre></div>
+</div>
+</section>
+<section id="date-and-math-functions">
+<h2>Date and Math Functions<a class="headerlink" href="#date-and-math-functions" title="Link to this heading">¶</a></h2>
+<p>The class also supports filtering based on date and math functions:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">filter</span><span class="o">.</span><span class="n">add_date_function_filter</span><span class="p">(</span><span class="s1">&#39;year&#39;</span><span class="p">,</span> <span class="s1">&#39;createdDate&#39;</span><span class="p">,</span> <span class="s1">&#39;2020&#39;</span><span class="p">)</span>  <span class="c1"># items created in 2020</span>
+<span class="nb">filter</span><span class="o">.</span><span class="n">add_math_function_filter</span><span class="p">(</span><span class="s1">&#39;floor&#39;</span><span class="p">,</span> <span class="s1">&#39;price&#39;</span><span class="p">,</span> <span class="s1">&#39;100&#39;</span><span class="p">)</span>  <span class="c1"># price rounded down equals 100</span>
+</pre></div>
+</div>
+</section>
+<section id="getting-the-filter-string">
+<h2>Getting the Filter String<a class="headerlink" href="#getting-the-filter-string" title="Link to this heading">¶</a></h2>
+<p>Once all conditions are added, retrieve the final filter string with <code class="docutils literal notranslate"><span class="pre">get_filter</span></code>:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">final_filter</span> <span class="o">=</span> <span class="nb">filter</span><span class="o">.</span><span class="n">get_filter</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">final_filter</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="supported-operators">
+<h2>Supported Operators<a class="headerlink" href="#supported-operators" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Comparison: <code class="docutils literal notranslate"><span class="pre">lt</span></code>, <code class="docutils literal notranslate"><span class="pre">le</span></code>, <code class="docutils literal notranslate"><span class="pre">gt</span></code>, <code class="docutils literal notranslate"><span class="pre">ge</span></code>, <code class="docutils literal notranslate"><span class="pre">eq</span></code>, <code class="docutils literal notranslate"><span class="pre">ne</span></code></p></li>
+<li><p>Logical: <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code></p></li>
+</ul>
+</section>
+<section id="supported-functions">
+<h2>Supported Functions<a class="headerlink" href="#supported-functions" title="Link to this heading">¶</a></h2>
+<ul class="simple">
+<li><p>Date: <code class="docutils literal notranslate"><span class="pre">year</span></code>, <code class="docutils literal notranslate"><span class="pre">month</span></code>, <code class="docutils literal notranslate"><span class="pre">day</span></code>, <code class="docutils literal notranslate"><span class="pre">hour</span></code>, <code class="docutils literal notranslate"><span class="pre">minute</span></code>, <code class="docutils literal notranslate"><span class="pre">second</span></code></p></li>
+<li><p>Math: <code class="docutils literal notranslate"><span class="pre">floor</span></code>, <code class="docutils literal notranslate"><span class="pre">ceiling</span></code></p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">ca_api_wrapper</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="clients_factory.html">Clients Factory</a></li>
+<li class="toctree-l1"><a class="reference internal" href="channel_advisor_client.html">Channel Advisor Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="product_export_client.html">Product Export Client</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Product Filter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#usage">Usage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#adding-filters">Adding Filters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#date-and-math-functions">Date and Math Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#getting-the-filter-string">Getting the Filter String</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#supported-operators">Supported Operators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#supported-functions">Supported Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="order_client.html">Order Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="product_client.html">Product Client</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="product_export_client.html" title="previous chapter">Product Export Client</a></li>
+      <li>Next: <a href="order_client.html" title="next chapter">Order Client</a></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>document.getElementById('searchbox').style.display = "block"</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2024, Vick Mu.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 7.2.6</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 0.7.16</a>
+      
+      |
+      <a href="_sources/product_filter.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
