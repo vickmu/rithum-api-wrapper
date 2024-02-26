@@ -1,3 +1,5 @@
+[![Documentation Status](https://readthedocs.org/projects/rithum-api-wrapper/badge/?version=latest)](https://rithum-api-wrapper.readthedocs.io/en/latest/?badge=latest)
+
 # CA API Wrapper
 
 The `ca_api_wrapper` is a Python package that simplifies interacting with the ChannelAdvisor API. It provides a straightforward, object-oriented approach to accessing ChannelAdvisor's features, such as managing products, orders, and exports, making it easier for developers to integrate ChannelAdvisor services into their applications.
